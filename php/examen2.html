@@ -1,0 +1,244 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejemplo</title>
+
+		<style type="text/css">
+			.nueva{
+				font-family:"Verdana";
+			}
+			body{
+				background-image: url('img/pizarra1.jpg');
+				color:black;
+				width:1500px;
+  				margin:0px auto;
+				  text-align: center;
+			}
+
+			/* .miboton {
+	box-shadow: 0px 0px 0px 2px #ffffff;
+	background:linear-gradient(to bottom, #040a14 5%, #d1dbe6 100%);
+	background-color:#040a14;
+	border-radius:10px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:11px;
+	padding:8px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.miboton:hover {
+	background:linear-gradient(to bottom, #d1dbe6 5%, #040a14 100%);
+	background-color:#d1dbe6;
+}
+.miboton:active {
+	position:relative;
+	top:1px;
+} */
+.miboton {
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background:linear-gradient(to bottom, #e4685d 5%, #db0b00 100%);
+	background-color:#e4685d;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.miboton:hover {
+	background:linear-gradient(to bottom, #db0b00 5%, #e4685d 100%);
+	background-color:#db0b00;
+}
+.miboton:active {
+	position:relative;
+	top:1px;
+}
+
+
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+                arrayprecios=[];
+					//Esto lo hago para poder añadirle los input type text
+					var x = document.createElement("INPUT");
+ 					 x.setAttribute("type", "text");
+					  var columnaelegida;
+					  var filaelegida;
+
+            function creartabla(){
+                var empresa=document.getElementById('empresa').value;
+                var telefono=document.getElementById('telefono').value;
+                var email=document.getElementById('email').value;
+                var codigo=document.getElementById('codigo').value;
+                var articulo=document.getElementById('articulo').value;
+                var precio=document.getElementById('precio').value;
+                var cantidad=document.getElementById('cantidad').value;
+
+				if ( document.getElementById( "miTabla" )) {
+					document.getElementById("info").innerHTML="<h2 align='center'>Ya existe una tabla, no puedes crear otra<h2>";
+		}else{
+
+        var body = document.getElementsByTagName("body")[0];
+        var tabla   = document.createElement("table");
+        var tblBody = document.createElement("tbody");
+        var fila = 3;
+        var columna = 3;
+	
+        for (var i = 0; i <fila; i++) {
+            var hilera = document.createElement("tr");
+            hilera.setAttribute("id","fila"+i);
+			k=0;
+           
+            for (var j = 0; j <=columna; j++) {
+            var celda = document.createElement("td");
+            
+			celda.setAttribute("onclick","saberrowindex(this)")
+
+            // celda.setAttribute("onclick","celdaelegida(this)")
+			// celda.setAttribute("id", );
+
+
+			// celda.appendChild(x);
+			var div=document.createElement("div");
+
+			div.setAttribute("id",k);
+			celda.appendChild(div);
+			celda.setAttribute("id","columna"+j)
+
+            hilera.appendChild(celda);
+            }
+           
+            tblBody.appendChild(hilera);
+
+        }
+        tabla.appendChild(tblBody);
+		k++;
+        body.appendChild(tabla);
+        tabla.setAttribute("border", "2");
+        tabla.setAttribute("id", "miTabla");
+		tabla.setAttribute("style", "align:center;");
+        document.getElementById("columna0").colSpan = '4';       
+        fila0.deleteCell(1);
+        fila0.deleteCell(2);
+        var primerafila = document.getElementsByTagName("tr")[0];
+        primerafila.innerHTML='<h4>Empresa:</h4>'+empresa;
+        primerafila.innerHTML+='<h4>Telefono:</h4>'+telefono;
+        primerafila.innerHTML+='<h4>Email:</h4>'+email;
+        var primertd = document.getElementsByTagName("td")[0];
+        document.getElementsByTagName("td")[0].removeAttribute("id");
+        primertd.innerHTML='<h4>CODIGO_PROD:</h4>'+codigo;
+        var segundotd = document.getElementsByTagName("td")[1];
+        segundotd.innerHTML='<h4>ARTICULO:</h4>'+articulo;
+        var tercertd = document.getElementsByTagName("td")[2];
+        tercertd.innerHTML='<h4>PRECIO:</h4>'+precio;
+        var cuartotd = document.getElementsByTagName("td")[3];
+        cuartotd.innerHTML='<h4>CANTIDAD:</h4>'+cantidad;
+        document.getElementById('codigo').value='';
+        document.getElementById('articulo').value='';
+        document.getElementById('precio').value='';
+        document.getElementById('cantidad').value='';
+        var ultimafila = document.getElementsByTagName("tr")[2];
+        document.getElementById("columna0").colSpan = '4';   
+        fila2.deleteCell(1);
+        fila2.deleteCell(2);
+        arrayprecios.push(precio);
+        ultimafila.innerHTML='<h4>PRECIO TOTAL A PAGAR:</h4>'+arrayprecios;
+		}
+
+            }
+
+            function añadefila(){
+                alert(document.getElementsByTagName("text").length)
+                var codigo=document.getElementById('codigo').value;
+                var articulo=document.getElementById('articulo').value;
+                var precio=document.getElementById('precio').value;
+                var cantidad=document.getElementById('cantidad').value;
+				var tabla = document.getElementById('miTabla');
+                var numFilas = tabla.rows.length;
+				var row = tabla.insertRow(numFilas-1);
+                var cell0 = row.insertCell(0);
+                var cell1 = row.insertCell(1);
+                var cell2 = row.insertCell(2);
+                // cell2.
+                var cell3 = row.insertCell(3);
+                cell0.innerHTML = '<h4>CODIGO_PROD:</h4>'+codigo;
+                cell1.innerHTML+='<h4>ARTICULO:</h4>'+articulo;
+                cell2.innerHTML+='<h4>PRECIO:</h4>'+precio;
+                cell3.innerHTML+='<h4>CANTIDAD:</h4>'+precio;
+			}
+            function saberrowindex(celda1){
+				filaelegida=celda1.parentNode.rowIndex;
+				columnaelegida= celda1.cellIndex;
+				celdaescogida=celda1.parentNode.cellIndex;
+				document.getElementById("clickado").innerHTML = '<h2 align="center">Fila elegida '+filaelegida+' ,columna elegida '+columnaelegida+'</h2>'
+
+			}
+
+
+
+
+
+
+		
+	
+		
+		
+			
+
+
+
+		</script>
+	</head>
+	<body>
+        <h4>DATOS EMPRESA</h4><br>
+        --------------------------------<br>
+    <label>EMPRESA:</label><input type="text" id="empresa"> <label>TELEFONO:</label><input type="text" id="telefono"> <label>EMAIL:</label><input type="text" id="email">
+        <br>
+        <h4>DATOS PEDIDOS</h4><br>
+        --------------------------------<br>
+    <label>CODIGO:</label><input type="text" id="codigo"> <label>ARTICULO:</label><input type="text" id="articulo"> <label>PRECIO:</label><input type="text" id="precio">
+    <label>CANTIDAD:</label><input type="text" id="cantidad">
+        <br>
+        <input type="button" name="" value="Crear tabla" class="miboton" onclick="creartabla()"><br>
+        <input type="button" name="" value="Añadir otra fila" class="miboton" onclick="añadefila()"><br>
+		<!-- <h2>Primera,ultima Filas y columnas:</h2>
+		<input type="button" value="insertar primera fila" class="miboton" onclick="insertarPrimeraFila()">
+		<input type="button" value="insertar ultima fila" class="miboton" onclick="insertarUltimaFila()">
+		<input type="button" value="borrar ultima fila" class="miboton" onclick="borrarUltimaFila()">
+		<input type="button" value="borrar primera columna" class="miboton" class="miboton" onclick="borrarPrimeraColumna()">
+		<input type="button" value="borrar ultima columna" class="miboton" class="miboton" onclick="borrarUltimaColumna()">
+		<input type="button" value="insertar ultima columna"  class="miboton" class="miboton" onclick="insertarUltimaColumna()">
+		<input type="button" value="insertar primera columna"  class="miboton" class="miboton" onclick="insertarPrimeraColumna()"><br>
+		<h2>Funciones click filas:</h2>
+		<input type="button" value="Insertar fila donde click" class="miboton" onclick="filaclick()">
+		<input type="button" value="Insertar fila delante" class="miboton" onclick="filadelante()">
+		<input type="button" value="Insertar fila detras" class="miboton" onclick="filadetras()">
+		<input type="button" value="Eliminar fila delante" class="miboton" onclick="eliminarfiladelante()">
+		<input type="button" value="Eliminar fila detras" class="miboton" onclick="eliminarfiladetras()">
+		<input type="button" value="Eliminar fila clickada" class="miboton" onclick="eliminarfilaclickada()"><br>
+		<h2>Funciones click columnas:</h2>
+		<input type="button" value="Insertar columna donde cick" class="miboton" onclick="insertarColumnaClick()">
+		<input type="button" value="insertar columna delante" class="miboton" onclick="insertarColumnaClickDelante()">
+		<input type="button" value="insertar columna detras" class="miboton" onclick="insertarColumnaClickDetras()">
+		<input type="button" value="Eliminar columna detrás" class="miboton" onclick="eliminarColumnaClickDetras()">
+		<input type="button" value="Eliminar columna delante" class="miboton" onclick="eliminarColumnaClickDelante()">
+		<input type="button" value="Eliminar columna clickada" class="miboton" onclick="eliminarColumnaClick()">
+		<h2>Colores:</h2>
+		<input type="color" id="color" value="red">
+		<input type="button" value="Cambiar Color Fila" class="miboton" onclick="cambiarcolorfila()">
+		<input type="button" value="Cambiar Color Columna" class="miboton" onclick="cambiarcolorColumna()">
+		<input type="button" value="Cambiar Color celda" class="miboton" onclick="cambiarcolorCelda()"><br> -->
+		<div id="clickado"></div>
+		<div id="info" ></div>
+
+	</body>
+</html>

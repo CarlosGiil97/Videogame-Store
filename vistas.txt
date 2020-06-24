@@ -1,0 +1,4 @@
+SELECT nombre,apellidos,telefono,email,direccion FROM usuarios WHERE perfil='cliente';
+
+SELECT SUM(precio_venta)FROM cesta WHERE fecha_compra = DATE_FORMAT(NOW(),'%Y-%m-%d')
+SELECT SUM(precio_venta) AS venta_dia FROM cesta WHERE fecha_compra = DATE_FORMAT(NOW(),'%Y-%m-%d')
