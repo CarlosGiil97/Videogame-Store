@@ -1,6 +1,6 @@
 # Videogame-Store
-Videogame Store make with PHP,Javascript,Jquery,SQL and Bootstrap
-
+Shopping Videogame Cart Store make with PHP,Javascript,Jquery,SQL and Bootstrap
+Carrito de la compra realizado con PHP,Javascript,Jquery,SQL y Bootstrap.
 <h3>Info:</h3>
 
 It is a kind of online store to buy video games. Mainly done with PHP and Javascript.
